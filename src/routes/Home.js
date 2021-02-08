@@ -1,4 +1,3 @@
-import Calc from "../components/Calculator";
 import Weigth from "../components/Molweight";
 
 const Home = () => {

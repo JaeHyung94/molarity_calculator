@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import Explain from "./Explain";
-import Calc from "./Calculator";
+import ReadyCalc from "./ReadyCalc";
+import CustomCalc from "./CustomCalc";
 
 const Weight = () => {
+  const [custom, setCustom] = useState(false);
   const [query, setQuery] = useState("");
   const [name, setName] = useState("");
   const [cid, setCid] = useState("");
@@ -13,6 +15,7 @@ const Weight = () => {
   };
   const handleSubmit = event => {
     event.preventDefault();
+    setCustom(false);
     getData(query);
     setName(query);
     setQuery("");
@@ -34,6 +37,32 @@ const Weight = () => {
     }
   };
 
+  const handleCustom = event => {
+    setCustom(event.target.checked);
+
+    if (custom === true) {
+      setQuery("");
+      setName("");
+      setCid("");
+      setMw("");
+    }
+  };
+
+  const ShowExplain = () => {
+    if (custom === false && cid !== "") {
+      return (
+        <div>
+          <Explain name={name} mw={mw} />
+          <ReadyCalc name={name} mw={mw} custom={custom}></ReadyCalc>
+        </div>
+      );
+    } else if (custom === true) {
+      return <CustomCalc name={name} mw={mw} custom={custom}></CustomCalc>;
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -45,8 +74,16 @@ const Weight = () => {
         />
         <button>Submit</button>
       </form>
-      <Explain name={name} mw={mw}></Explain>
-      <Calc name={name} mw={mw}></Calc>
+      <form>
+        <label htmlFor="custom">Custom Calculation</label>
+        <input
+          name="custom"
+          type="checkbox"
+          onClick={handleCustom}
+          id="customBox"
+        ></input>
+      </form>
+      <ShowExplain />
     </div>
   );
 };
