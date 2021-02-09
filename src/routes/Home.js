@@ -3,7 +3,7 @@ import Weigth from "../components/Molweight";
 const Home = () => {
   return (
     <div>
-      <h1>This is Home Page</h1>
+      <h1>Molarity Calculator</h1>
       <Weigth></Weigth>
     </div>
   );
