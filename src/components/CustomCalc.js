@@ -31,9 +31,7 @@ const CustomCalc = ({ mw }) => {
   };
 
   const calculator = () => {
-    console.log(
-      Calculator(mass, massUnit, conc, concUnit, vol, volUnit, weight)
-    );
+    return Calculator(mass, massUnit, conc, concUnit, vol, volUnit, weight);
   };
 
   const massSelect = event => {
@@ -68,11 +66,15 @@ const CustomCalc = ({ mw }) => {
             value={conc}
             onChange={handleConc}
           ></input>
-          <select name="concentration" onChange={concSelect} defaultValue="mm">
-            <option value="nm">Nanomolar</option>
-            <option value="um">Micromolar</option>
-            <option value="mm">Millimolar</option>
-            <option value="m">Molar</option>
+          <select
+            name="concentration"
+            onChange={concSelect}
+            defaultValue="mmol"
+          >
+            <option value="nmol">Nanomolar</option>
+            <option value="umol">Micromolar</option>
+            <option value="mmol">Millimolar</option>
+            <option value="mol">Molar</option>
           </select>
         </div>
         <div>
