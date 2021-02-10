@@ -3,6 +3,7 @@ import axios from "axios";
 import Explain from "./Explain";
 import ReadyCalc from "./ReadyCalc";
 import CustomCalc from "./CustomCalc";
+import Suggestion from "./Suggestion";
 
 const Weight = () => {
   const [custom, setCustom] = useState(false);
@@ -58,6 +59,7 @@ const Weight = () => {
           <div>
             <Explain name={name} mw={mw} />
             <ReadyCalc name={name} mw={mw} custom={custom}></ReadyCalc>
+            <Suggestion></Suggestion>
           </div>
         );
       } else {
