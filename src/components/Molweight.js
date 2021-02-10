@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import Explain from "./Explain";
 import ReadyCalc from "./ReadyCalc";
@@ -10,12 +10,16 @@ const Weight = () => {
   const [name, setName] = useState("");
   const [cid, setCid] = useState("");
   const [mw, setMw] = useState("");
+  const CustomRef = useRef();
   const handleQueryChange = event => {
     setQuery(event.target.value);
   };
   const handleSubmit = event => {
     event.preventDefault();
     setCustom(false);
+    if (CustomRef.current.checked === true) {
+      CustomRef.current.checked = false;
+    }
     getData(query);
     setName(query);
     setQuery("");
@@ -39,7 +43,6 @@ const Weight = () => {
 
   const handleCustom = event => {
     setCustom(event.target.checked);
-
     if (custom === true) {
       setQuery("");
       setName("");
@@ -49,13 +52,21 @@ const Weight = () => {
   };
 
   const ShowExplain = () => {
-    if (custom === false && cid !== "") {
-      return (
-        <div>
-          <Explain name={name} mw={mw} />
-          <ReadyCalc name={name} mw={mw} custom={custom}></ReadyCalc>
-        </div>
-      );
+    if (custom === false && mw !== "") {
+      if (mw !== "Not Found") {
+        return (
+          <div>
+            <Explain name={name} mw={mw} />
+            <ReadyCalc name={name} mw={mw} custom={custom}></ReadyCalc>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <Explain name={name} mw={mw} />
+          </div>
+        );
+      }
     } else if (custom === true) {
       return <CustomCalc name={name} mw={mw} custom={custom}></CustomCalc>;
     } else {
@@ -80,7 +91,7 @@ const Weight = () => {
           name="custom"
           type="checkbox"
           onClick={handleCustom}
-          id="customBox"
+          ref={CustomRef}
         ></input>
       </form>
       <ShowExplain />

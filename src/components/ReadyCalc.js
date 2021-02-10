@@ -9,9 +9,9 @@ const ReadyCalc = ({ mw, cid }) => {
   const [massUnit, setMassUnit] = useState("mg");
   const [concUnit, setConcUnit] = useState("mmol");
   const [volUnit, setVolUnit] = useState("ml");
-  const MassUnit = useRef()
-  const ConcUnit = useRef()
-  const VolUnit = useRef()
+  const MassUnit = useRef();
+  const ConcUnit = useRef();
+  const VolUnit = useRef();
 
   const handleMass = event => {
     setMass(event.target.value);
@@ -29,53 +29,61 @@ const ReadyCalc = ({ mw, cid }) => {
   };
 
   const calculator = () => {
-    const result = Calculator(mass, massUnit, conc, concUnit, vol, volUnit, weight);
+    const result = Calculator(
+      mass,
+      massUnit,
+      conc,
+      concUnit,
+      vol,
+      volUnit,
+      weight
+    );
     if (result.empty === "nothing") {
-      console.log("All Fields are Not Empty")
+      console.log("All Fields are Not Empty");
     } else if (result.empty === "mass") {
-      setMass(result.result.val.toFixed(3))
-      setMassUnit(result.result.unit)
-      const optionArray = MassUnit.current.children
+      setMass(result.result.val.toFixed(3));
+      setMassUnit(result.result.unit);
+      const optionArray = MassUnit.current.children;
       for (const option in optionArray) {
         if (optionArray[option].value === result.result.unit) {
-          optionArray[option].setAttribute("selected", true)
+          optionArray[option].setAttribute("selected", true);
         }
       }
     } else if (result.empty === "conc") {
-      setConc(result.result.val.toFixed(3))
-      setConcUnit(result.result.unit)
-      const optionArray = ConcUnit.current.children
-      console.log(optionArray)
+      setConc(result.result.val.toFixed(3));
+      setConcUnit(result.result.unit);
+      const optionArray = ConcUnit.current.children;
+      console.log(optionArray);
       for (const option in optionArray) {
-        if(optionArray[option].value === result.result.unit) {
-          optionArray[option].setAttribute("selected", true)
+        if (optionArray[option].value === result.result.unit) {
+          optionArray[option].setAttribute("selected", true);
         }
       }
     } else if (result.empty === "volume") {
-      setVol(result.result.val.toFixed(3))
-      setVolUnit(result.result.unit)
-      const optionArray = VolUnit.current.children
+      setVol(result.result.val.toFixed(3));
+      setVolUnit(result.result.unit);
+      const optionArray = VolUnit.current.children;
       for (const option in optionArray) {
         if (optionArray[option].value === result.result.unit) {
-          optionArray[option].setAttribute("selected", true)
+          optionArray[option].setAttribute("selected", true);
         }
       }
     } else {
-      console.log("Something Wrong during get calculation data")
+      console.log("Something Wrong during get calculation data");
     }
   };
 
-    const massSelect = event => {
+  const massSelect = event => {
     setMassUnit(event.target.value);
-    };
+  };
 
-    const concSelect = event => {
-      setConcUnit(event.target.value);
-    };
+  const concSelect = event => {
+    setConcUnit(event.target.value);
+  };
 
-    const volSelect = event => {
-      setVolUnit(event.target.value);
-    };
+  const volSelect = event => {
+    setVolUnit(event.target.value);
+  };
 
   return (
     <div>
@@ -83,7 +91,12 @@ const ReadyCalc = ({ mw, cid }) => {
         <div>
           <label htmlFor="mass">Mass</label>
           <input name="mass" value={mass} onChange={handleMass}></input>
-          <select name="mass" defaultValue="mg" onChange={massSelect} ref={MassUnit}>
+          <select
+            name="mass"
+            defaultValue="mg"
+            onChange={massSelect}
+            ref={MassUnit}
+          >
             <option value="ng">Nanogram</option>
             <option value="ug">Microgram</option>
             <option value="mg">Milligram</option>
@@ -101,7 +114,7 @@ const ReadyCalc = ({ mw, cid }) => {
             name="concentration"
             onChange={concSelect}
             defaultValue="mmol"
-            ref = {ConcUnit}
+            ref={ConcUnit}
           >
             <option value="nmol">Nanomolar</option>
             <option value="umol">Micromolar</option>
@@ -112,7 +125,12 @@ const ReadyCalc = ({ mw, cid }) => {
         <div>
           <label htmlFor="volume">Volume</label>
           <input name="volume" value={vol} onChange={handleVol}></input>
-          <select name="volume" onChange={volSelect} defaultValue="ml" ref={VolUnit}>
+          <select
+            name="volume"
+            onChange={volSelect}
+            defaultValue="ml"
+            ref={VolUnit}
+          >
             <option value="nl">Nanoliter</option>
             <option value="ul">Microliter</option>
             <option value="ml">Milliliter</option>
