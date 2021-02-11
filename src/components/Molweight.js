@@ -57,7 +57,7 @@ const Weight = () => {
       if (mw !== "Not Found") {
         return (
           <div>
-            <Explain name={name} mw={mw} />
+            <Explain name={name} mw={mw} cid={cid} />
             <ReadyCalc name={name} mw={mw} custom={custom}></ReadyCalc>
             <Suggestion></Suggestion>
           </div>
