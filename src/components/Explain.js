@@ -3,7 +3,7 @@ const Explain = ({ name, mw, sol }) => {
   const found = (name, mw) => {
     return (
       <div className="my-5">
-        <div className="font-medium text-md mb-5">
+        <div className="font-medium text-sm sm:text-md mb-5">
           <span>Searching for </span>
           <span className="font-medium text-red-400">"{name}"</span>
         </div>

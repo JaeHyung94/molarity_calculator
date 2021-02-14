@@ -106,19 +106,19 @@ const Weight = () => {
   };
 
   return (
-    <div className="container mx-auto w-2/4">
+    <div className="container mx-auto w-4/5 md:w-3/5">
       <form onSubmit={handleSubmit} className="flex flex-row w-full mb-4">
         <input
           type="text"
           placeholder="Searching by Name"
           value={query}
           onChange={handleQueryChange}
-          className="search-box border w-full px-4 py-2 mr-3 text-normal font-medium text-gray-900 placeholder-gray-600 rounded-sm shadow-md focus:outline-none"
+          className="search-box border w-full px-4 py-2 mr-3 text-sm sm:text-base font-medium text-gray-900 placeholder-gray-600 rounded-sm shadow-md focus:outline-none"
         />
-        <button className="text-center font-medium px-2 rounded-sm py-2 text-gray-900 bg-blue-400 shadow-md focus:outline-none">Submit</button>
+        <button className=" text-sm sm:text-base text-center font-medium px-2 rounded-sm py-2 text-gray-900 bg-blue-400 shadow-md focus:outline-none">Submit</button>
       </form>
       <form className="flex flex-row items-center">
-        <label htmlFor="custom" className="text-sm font-medium mr-2">Custom Calculation</label>
+        <label htmlFor="custom" className="text-xs sm:text-sm font-medium mr-2">Custom Calculation</label>
         <input
           name="custom"
           type="checkbox"
