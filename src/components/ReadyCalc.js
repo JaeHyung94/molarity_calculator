@@ -87,60 +87,81 @@ const ReadyCalc = ({ mw, cid }) => {
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <div className="font-medium text-md">Calculator</div>
+      <form onSubmit={onSubmit} className="flex flex-row justify-center items-center">
         <div>
-          <label htmlFor="mass">Mass</label>
-          <input name="mass" value={mass} onChange={handleMass}></input>
-          <select
-            name="mass"
-            defaultValue="mg"
-            onChange={massSelect}
-            ref={MassUnit}
-          >
-            <option value="ng">Nanogram</option>
-            <option value="ug">Microgram</option>
-            <option value="mg">Milligram</option>
-            <option value="g">Gram</option>
-          </select>
+          <div>
+            <label htmlFor="mass" className="cal-label">Mass</label>
+          </div>
+          <div>
+            <input name="mass" value={mass} onChange={handleMass} className="cal-input"></input>
+            <select
+              name="mass"
+              defaultValue="mg"
+              onChange={massSelect}
+              ref={MassUnit}
+            >
+              <option value="ng">ng</option>
+              <option value="ug">μg</option>
+              <option value="mg">mg</option>
+              <option value="g">g</option>
+            </select>
+          </div>
         </div>
+        <div>=</div>
         <div>
-          <label htmlFor="concentration">Concentration</label>
-          <input
-            name="concentration"
-            value={conc}
-            onChange={handleConc}
-          ></input>
-          <select
-            name="concentration"
-            onChange={concSelect}
-            defaultValue="mmol"
-            ref={ConcUnit}
-          >
-            <option value="nmol">Nanomolar</option>
-            <option value="umol">Micromolar</option>
-            <option value="mmol">Millimolar</option>
-            <option value="mol">Molar</option>
-          </select>
+          <div>
+            <label htmlFor="concentration" className="cal-label">Concentration</label>
+          </div>
+          <div>
+            <input
+              name="concentration"
+              value={conc}
+              onChange={handleConc}
+              className="cal-input"
+            ></input>
+            <select
+              name="concentration"
+              onChange={concSelect}
+              defaultValue="mmol"
+              ref={ConcUnit}
+            >
+              <option value="nmol">nM</option>
+              <option value="umol">μM</option>
+              <option value="mmol">mM</option>
+              <option value="mol">M</option>
+            </select>
+          </div>
         </div>
+        <div>X</div>
         <div>
-          <label htmlFor="volume">Volume</label>
-          <input name="volume" value={vol} onChange={handleVol}></input>
-          <select
-            name="volume"
-            onChange={volSelect}
-            defaultValue="ml"
-            ref={VolUnit}
-          >
-            <option value="nl">Nanoliter</option>
-            <option value="ul">Microliter</option>
-            <option value="ml">Milliliter</option>
-            <option value="l">Liter</option>
-          </select>
+          <div>
+            <label htmlFor="volume" className="cal-label">Volume</label>
+          </div>
+          <div>  
+            <input name="volume" value={vol} onChange={handleVol} className="cal-input"></input>
+            <select
+              name="volume"
+              onChange={volSelect}
+              defaultValue="ml"
+              ref={VolUnit}
+            >
+              <option value="nl">nl</option>
+              <option value="ul">μl</option>
+              <option value="ml">ml</option>
+              <option value="l">l</option>
+            </select>
+          </div>
         </div>
+        <div>X</div>
         <div>
-          <label htmlFor="weight">Molecular Weight</label>
-          <input name="weight" value={mw} readOnly></input>
-          g/mol
+          <div>
+            <label htmlFor="weight" className="cal-label">Molecular Weight</label>
+          </div>
+          <div>
+            <input name="weight" value={mw} readOnly className="cal-input"></input>
+            g/mol
+          </div>
         </div>
         <button>Submit</button>
       </form>
