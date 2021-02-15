@@ -5,13 +5,13 @@ import ReadyCalc from "./ReadyCalc";
 import CustomCalc from "./CustomCalc";
 import Solubility from "./Solubility";
 
-const Weight = () => {
+const Weight = ({ mainDiv }) => {
   const [custom, setCustom] = useState(false);
   const [query, setQuery] = useState("");
   const [name, setName] = useState("");
   const [cid, setCid] = useState("");
   const [mw, setMw] = useState("");
-  const [sol, setSol] = useState([])
+  const [sol, setSol] = useState([]);
   const CustomRef = useRef();
   const handleQueryChange = event => {
     setQuery(event.target.value);
@@ -25,6 +25,8 @@ const Weight = () => {
     getData(query);
     setName(query);
     setQuery("");
+    mainDiv.current.className =
+      "w-full transition-translate duration-1000 ease-in-out translate-x-20 sm:translate-x-0 sm:mt-20 min-h-full flex flex-col justify-center items-center";
   };
   const getData = async query => {
     try {
@@ -44,40 +46,46 @@ const Weight = () => {
     }
   };
 
-  const getSolubility = async(cid) => {
-    let results = []
+  const getSolubility = async cid => {
+    let results = [];
     try {
-        const result = await axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/${cid}/JSON?heading=solubility`)
-        const solubilitySet = result.data.Record.Section[0].Section[0].Section[0].Information
-        if (solubilitySet.length === 0) {
-            const final_result = "Cannot find solubility data"
-            results.push(final_result)
-        } else if (solubilitySet.length === 1) {
-            const final_result = solubilitySet[0].Value.StringWithMarkup[0].String
-            results.push(final_result)
-        } else {
-            let n = 0;
-            while (n < (solubilitySet.length)) {
-                const temp = solubilitySet[n]
-                if (temp.Value.StringWithMarkup[0].Markup) {
-                    results.push(temp.Value.StringWithMarkup[0].String)
-                }
-                n++;
-            }
+      const result = await axios.get(
+        `https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/${cid}/JSON?heading=solubility`
+      );
+      const solubilitySet =
+        result.data.Record.Section[0].Section[0].Section[0].Information;
+      if (solubilitySet.length === 0) {
+        const final_result = "Cannot find solubility data";
+        results.push(final_result);
+      } else if (solubilitySet.length === 1) {
+        const final_result = solubilitySet[0].Value.StringWithMarkup[0].String;
+        results.push(final_result);
+      } else {
+        let n = 0;
+        while (n < solubilitySet.length) {
+          const temp = solubilitySet[n];
+          if (temp.Value.StringWithMarkup[0].Markup) {
+            results.push(temp.Value.StringWithMarkup[0].String);
+          }
+          n++;
         }
-        return setSol(results)
+      }
+      return setSol(results);
     } catch (error) {
-        console.log("Cannot get solubility data")
+      results.push("Something Wrong: Cannot get solubility data");
     }
-}
+  };
 
   const handleCustom = event => {
     setCustom(event.target.checked);
+    console.log(custom);
     if (custom === true) {
       setQuery("");
       setName("");
       setCid("");
       setMw("");
+      mainDiv.current.className =
+        "w-full transition-mt duration-1000 ease-in-out mt-20 sm:mt-20 min-h-full flex flex-col justify-center items-center";
     }
   };
 
@@ -99,6 +107,8 @@ const Weight = () => {
         );
       }
     } else if (custom === true) {
+      mainDiv.current.className =
+        "w-full transition-translate duration-1000 ease-in-out translate-x-20 sm:translate-x-0 sm:mt-20 min-h-full flex flex-col justify-center items-center";
       return <CustomCalc name={name} mw={mw} custom={custom}></CustomCalc>;
     } else {
       return null;
@@ -115,10 +125,14 @@ const Weight = () => {
           onChange={handleQueryChange}
           className="search-box border w-full px-4 py-2 mr-3 text-sm sm:text-base font-medium text-gray-900 placeholder-gray-600 rounded-sm shadow-md focus:outline-none"
         />
-        <button className=" text-sm sm:text-base text-center font-medium px-2 rounded-sm py-2 text-gray-900 bg-blue-400 shadow-md focus:outline-none">Submit</button>
+        <button className=" text-sm sm:text-base text-center font-medium px-2 rounded-sm py-2 text-gray-900 bg-blue-400 shadow-md focus:outline-none">
+          Submit
+        </button>
       </form>
       <form className="flex flex-row items-center">
-        <label htmlFor="custom" className="text-xs sm:text-sm font-medium mr-2">Custom Calculation</label>
+        <label htmlFor="custom" className="text-xs sm:text-sm font-medium mr-2">
+          Custom Calculation
+        </label>
         <input
           name="custom"
           type="checkbox"

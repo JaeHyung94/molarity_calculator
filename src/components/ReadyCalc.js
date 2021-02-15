@@ -88,14 +88,22 @@ const ReadyCalc = ({ mw, cid }) => {
   return (
     <div className="w-full">
       <div className="font-medium text-sm sm:text-md">Calculator</div>
-      <form onSubmit={onSubmit} className="flex flex-col justify-between items-center sm:items-start w-full">
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col justify-between items-center sm:items-start w-full"
+      >
         <div className="flex flex-col sm:flex-row justify-between items-center w-full">
           <div className="w-auto">
             <div className="cal-label">
               <label htmlFor="mass">Mass</label>
             </div>
             <div>
-              <input name="mass" value={mass} onChange={handleMass} className="cal-input"></input>
+              <input
+                name="mass"
+                value={mass}
+                onChange={handleMass}
+                className="cal-input"
+              ></input>
               <select
                 name="mass"
                 defaultValue="mg"
@@ -113,7 +121,7 @@ const ReadyCalc = ({ mw, cid }) => {
           <div className="cal-symbol">=</div>
           <div className="w-auto">
             <div className="cal-label">
-              <label htmlFor="concentration" >Conc.</label>
+              <label htmlFor="concentration">Conc.</label>
             </div>
             <div>
               <input
@@ -141,8 +149,13 @@ const ReadyCalc = ({ mw, cid }) => {
             <div className="cal-label">
               <label htmlFor="volume">Vol.</label>
             </div>
-            <div>  
-              <input name="volume" value={vol} onChange={handleVol} className="cal-input"></input>
+            <div>
+              <input
+                name="volume"
+                value={vol}
+                onChange={handleVol}
+                className="cal-input"
+              ></input>
               <select
                 name="volume"
                 onChange={volSelect}
@@ -163,12 +176,17 @@ const ReadyCalc = ({ mw, cid }) => {
               <label htmlFor="weight">Mol Weight</label>
             </div>
             <div>
-              <input name="weight" value={mw} readOnly className="cal-input"></input>
+              <input
+                name="weight"
+                value={mw}
+                readOnly
+                className="cal-input"
+              ></input>
               <span className="cal-select ml-1">g/mol</span>
             </div>
           </div>
         </div>
-        <button className="custom-btn pb-0">Calc</button>
+        <button className="custom-btn pb-0">Calculate</button>
       </form>
     </div>
   );
