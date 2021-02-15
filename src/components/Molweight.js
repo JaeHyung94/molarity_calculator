@@ -26,7 +26,7 @@ const Weight = ({ mainDiv }) => {
     setName(query);
     setQuery("");
     mainDiv.current.className =
-      "w-full transition-translate duration-1000 ease-in-out translate-x-20 sm:translate-x-0 sm:mt-20 min-h-full flex flex-col justify-center items-center";
+      "w-full transition-mt duration-1000 ease-in-out mt-0 sm:mt-20 min-h-full flex flex-col justify-center items-center";
   };
   const getData = async query => {
     try {
@@ -108,7 +108,7 @@ const Weight = ({ mainDiv }) => {
       }
     } else if (custom === true) {
       mainDiv.current.className =
-        "w-full transition-translate duration-1000 ease-in-out translate-x-20 sm:translate-x-0 sm:mt-20 min-h-full flex flex-col justify-center items-center";
+        "w-full transition-mt duration-1000 ease-in-out mt-10 sm:mt-20 min-h-full flex flex-col justify-center items-center";
       return <CustomCalc name={name} mw={mw} custom={custom}></CustomCalc>;
     } else {
       return null;
