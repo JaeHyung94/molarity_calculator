@@ -116,7 +116,7 @@ const Weight = ({ mainDiv }) => {
   };
 
   return (
-    <div className="container mx-auto w-4/5 md:w-3/5 lg:w-1/2 xl:w-1/3 2xl:w-1/4">
+    <div className="container mx-auto w-4/5 md:w-3/5 2xl:w-1/3">
       <form onSubmit={handleSubmit} className="flex flex-row w-full mb-4">
         <input
           type="text"
