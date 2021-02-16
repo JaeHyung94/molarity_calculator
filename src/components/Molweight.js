@@ -116,11 +116,11 @@ const Weight = ({ mainDiv }) => {
   };
 
   return (
-    <div className="container mx-auto w-4/5 md:w-3/5">
+    <div className="container mx-auto w-4/5 md:w-3/5 lg:w-1/2 xl:w-1/3 2xl:w-1/4">
       <form onSubmit={handleSubmit} className="flex flex-row w-full mb-4">
         <input
           type="text"
-          placeholder="Searching by Name"
+          placeholder="Searching by Name or CAS#"
           value={query}
           onChange={handleQueryChange}
           className="search-box border w-full px-4 py-2 mr-3 text-sm sm:text-base font-medium text-gray-900 placeholder-gray-600 rounded-sm shadow-md focus:outline-none"
