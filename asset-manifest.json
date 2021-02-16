@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/molarity_calculator/static/css/main.e380578e.chunk.css",
-    "main.js": "/molarity_calculator/static/js/main.58c29261.chunk.js",
-    "main.js.map": "/molarity_calculator/static/js/main.58c29261.chunk.js.map",
+    "main.css": "/molarity_calculator/static/css/main.eaa7d77d.chunk.css",
+    "main.js": "/molarity_calculator/static/js/main.b816f6ba.chunk.js",
+    "main.js.map": "/molarity_calculator/static/js/main.b816f6ba.chunk.js.map",
     "runtime-main.js": "/molarity_calculator/static/js/runtime-main.9e7cc8f8.js",
     "runtime-main.js.map": "/molarity_calculator/static/js/runtime-main.9e7cc8f8.js.map",
     "static/js/2.9d15a007.chunk.js": "/molarity_calculator/static/js/2.9d15a007.chunk.js",
     "static/js/2.9d15a007.chunk.js.map": "/molarity_calculator/static/js/2.9d15a007.chunk.js.map",
     "index.html": "/molarity_calculator/index.html",
-    "static/css/main.e380578e.chunk.css.map": "/molarity_calculator/static/css/main.e380578e.chunk.css.map",
+    "static/css/main.eaa7d77d.chunk.css.map": "/molarity_calculator/static/css/main.eaa7d77d.chunk.css.map",
     "static/js/2.9d15a007.chunk.js.LICENSE.txt": "/molarity_calculator/static/js/2.9d15a007.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9e7cc8f8.js",
     "static/js/2.9d15a007.chunk.js",
-    "static/css/main.e380578e.chunk.css",
-    "static/js/main.58c29261.chunk.js"
+    "static/css/main.eaa7d77d.chunk.css",
+    "static/js/main.b816f6ba.chunk.js"
   ]
 }
